@@ -18,19 +18,23 @@ public class Participante implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id_participante;
+	private Long id;
 	private String nome;
 	private String idade;
 	private String email;
 	private String idioma;
 
+	@ManyToOne
+	@JoinColumn(name = "palpite_id")
+	Palpites palpites;
+
 	public Participante() {
 
 	}
 
-	public Participante(Long id_participante, String nome, String idade, String email, String idioma) {
+	public Participante(Long id, String nome, String idade, String email, String idioma) {
 		super();
-		this.id_participante = id_participante;
+		this.id = id;
 		this.nome = nome;
 		this.idade = idade;
 		this.email = email;
@@ -38,11 +42,11 @@ public class Participante implements Serializable {
 	}
 
 	public Long getId_participante() {
-		return id_participante;
+		return id;
 	}
 
-	public void setId_participante(Long id_participante) {
-		this.id_participante = id_participante;
+	public void setId_participante(Long id) {
+		this.id = id;
 	}
 
 	public String getNome() {
@@ -79,7 +83,7 @@ public class Participante implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id_participante);
+		return Objects.hash(id);
 	}
 
 	@Override
@@ -91,8 +95,7 @@ public class Participante implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Participante other = (Participante) obj;
-		return Objects.equals(id_participante, other.id_participante);
+		return Objects.equals(id, other.id);
 	}
-
 
 }
