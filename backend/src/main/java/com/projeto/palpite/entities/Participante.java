@@ -1,14 +1,15 @@
 package com.projeto.palpite.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -24,28 +25,28 @@ public class Participante implements Serializable {
 	private String email;
 	private String idioma;
 
-	@ManyToOne
-	@JoinColumn(name = "palpite_id")
-	Palpites palpites;
+	@OneToMany(mappedBy = "participante")
+    private List<Palpite> palpite = new ArrayList<>();
 
 	public Participante() {
 
 	}
 
-	public Participante(Long id, String nome, String idade, String email, String idioma) {
+	public Participante(Long id, String nome, String idade, String email, String idioma, List<Palpite> palpite) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.idade = idade;
 		this.email = email;
 		this.idioma = idioma;
+		this.palpite = palpite;
 	}
 
-	public Long getId_participante() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId_participante(Long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -79,6 +80,14 @@ public class Participante implements Serializable {
 
 	public void setIdioma(String idioma) {
 		this.idioma = idioma;
+	}
+
+	public List<Palpite> getPalpites() {
+		return palpite;
+	}
+
+	public void setPalpites(List<Palpite> palpites) {
+		this.palpite = palpites;
 	}
 
 	@Override

@@ -14,7 +14,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_palpites")
-public class Palpites implements Serializable {
+public class Palpite implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -22,18 +22,21 @@ public class Palpites implements Serializable {
 	private Long id;
 
 	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_participante")
+	private Participante participante;
 
-	@JoinColumn(name = "nomePalpite")
-
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "nome_palpite")
 	private Time time;
 
-	public Palpites() {
+	public Palpite() {
 	}
 
-	public Palpites(Long id, String primeiro, String segundo, String terceiro) {
+	public Palpite(Long id, Time time, Participante participantes) {
 		super();
 		this.id = id;
-
+		this.time = time;
+		this.participante = participantes;
 	}
 
 	public Long getId() {
@@ -42,6 +45,22 @@ public class Palpites implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Time getTime() {
+		return time;
+	}
+
+	public void setTime(Time time) {
+		this.time = time;
+	}
+
+	public Participante getParticipante() {
+		return participante;
+	}
+
+	public void setParticipante(Participante participante) {
+		this.participante = participante;
 	}
 
 	@Override
@@ -57,7 +76,7 @@ public class Palpites implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Palpites other = (Palpites) obj;
+		Palpite other = (Palpite) obj;
 		return Objects.equals(id, other.id);
 	}
 

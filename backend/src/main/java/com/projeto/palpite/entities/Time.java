@@ -20,37 +20,32 @@ public class Time implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String nomePalpite;
 	private String img;
+	private String nomePalpite;
+	private String grupo;
 
 	@OneToMany(mappedBy = "time")
-	private List<Palpites> palpites = new ArrayList<>();
+	private List<Palpite> palpites = new ArrayList<>();
 
 	public Time() {
 
 	}
 
-	public Time(Long id, String nomePalpite, String img) {
+	public Time(Long id, String img, String nomePalpite, String grupo, List<Palpite> palpites) {
 		super();
 		this.id = id;
-		this.nomePalpite = nomePalpite;
 		this.img = img;
+		this.nomePalpite = nomePalpite;
+		this.grupo = grupo;
+		this.palpites = palpites;
 	}
 
-	public Long getId_time() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId_time(Long id) {
+	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getNome() {
-		return nomePalpite;
-	}
-
-	public void setNome(String nome) {
-		this.nomePalpite = nome;
 	}
 
 	public String getImg() {
@@ -59,6 +54,30 @@ public class Time implements Serializable {
 
 	public void setImg(String img) {
 		this.img = img;
+	}
+
+	public String getNomePalpite() {
+		return nomePalpite;
+	}
+
+	public void setNomePalpite(String nomePalpite) {
+		this.nomePalpite = nomePalpite;
+	}
+
+	public String getGrupo() {
+		return grupo;
+	}
+
+	public void setGrupo(String grupo) {
+		this.grupo = grupo;
+	}
+
+	public List<Palpite> getPalpites() {
+		return palpites;
+	}
+
+	public void setPalpites(List<Palpite> palpites) {
+		this.palpites = palpites;
 	}
 
 	@Override
