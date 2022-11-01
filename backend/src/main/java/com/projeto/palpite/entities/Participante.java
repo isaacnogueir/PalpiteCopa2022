@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -26,7 +28,11 @@ public class Participante implements Serializable {
 	private String idioma;
 
 	@OneToMany(mappedBy = "participante")
-    private List<Palpite> palpite = new ArrayList<>();
+	private List<Palpite> palpite = new ArrayList<>();
+
+	@ManyToOne
+	@JoinColumn(name = "palpite_id")
+	private Palpite palpites;
 
 	public Participante() {
 
@@ -82,14 +88,25 @@ public class Participante implements Serializable {
 		this.idioma = idioma;
 	}
 
-	public List<Palpite> getPalpites() {
+	public List<Palpite> getPalpite() {
 		return palpite;
 	}
 
-	public void setPalpites(List<Palpite> palpites) {
-		this.palpite = palpites;
+	public void setPalpite(List<Palpite> palpite) {
+		this.palpite = palpite;
 	}
 
+	public Palpite getPalpites() {
+		return palpites;
+	}
+
+	public void setPalpites(Palpite palpites) {
+		this.palpites = palpites;
+	}
+
+	
+	
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);

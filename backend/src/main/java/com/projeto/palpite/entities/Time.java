@@ -24,6 +24,7 @@ public class Time implements Serializable {
 	private String nomePalpite;
 	private String grupo;
 
+
 	@OneToMany(mappedBy = "time")
 	private List<Palpite> palpites = new ArrayList<>();
 
