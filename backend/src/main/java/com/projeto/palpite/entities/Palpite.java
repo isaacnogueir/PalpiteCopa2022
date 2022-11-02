@@ -25,11 +25,12 @@ public class Palpite implements Serializable {
 	private Long id;
 
 	@ManyToOne(fetch = FetchType.LAZY)
+
 	@JoinColumn(name = "id_participante")
 	private Participante participante;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "nome_palpite")
+	@JoinColumn(name = "id_time")
 	private Time time;
 
 	@OneToMany(mappedBy = "palpites")

@@ -14,6 +14,9 @@ public class ParticipanteDTO implements Serializable {
 	private String idioma;
 	private String nomePalpite;
 	private String grupo;
+	
+	
+	
 
 	public ParticipanteDTO() {
 

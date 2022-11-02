@@ -15,11 +15,8 @@ INSERT INTO tb_participante (email,idade,idioma,nome) VALUES ('joão@gmail.com' 
 
 
 
-INSERT INTO tb_palpites (id_participante, nome_palpite) VALUES(1,1);
-
-
-
-INSERT INTO tb_palpites (id_participante, nome_palpite) VALUES(2,1);
+INSERT INTO tb_palpites (id_participante, id_time) VALUES(1,1);
+INSERT INTO tb_palpites (id_participante, id_time) VALUES(2,1);
 
 
 

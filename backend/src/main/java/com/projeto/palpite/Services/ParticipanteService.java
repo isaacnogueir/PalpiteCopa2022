@@ -1,6 +1,8 @@
 package com.projeto.palpite.Services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -37,6 +39,13 @@ public class ParticipanteService {
 
 		return new ParticipanteDTO(entity);
 
+	}
+
+	@Transactional(readOnly = true)
+
+	public Page<ParticipanteDTO> findbyNome(PageRequest pageRequest) {
+
+		return participanterepository.findbynome(pageRequest).map(x -> new ParticipanteDTO(x));
 	}
 
 }
