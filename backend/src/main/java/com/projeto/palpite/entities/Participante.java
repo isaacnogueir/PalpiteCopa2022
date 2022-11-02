@@ -21,11 +21,12 @@ public class Participante implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
 	private Long id;
-	private String nome;
-	private String idade;
 	private String email;
+	private String idade;
 	private String idioma;
+	private String nome;
 
 	@OneToMany(mappedBy = "participante")
 	private List<Palpite> palpite = new ArrayList<>();
@@ -104,9 +105,6 @@ public class Participante implements Serializable {
 		this.palpites = palpites;
 	}
 
-	
-	
-	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);

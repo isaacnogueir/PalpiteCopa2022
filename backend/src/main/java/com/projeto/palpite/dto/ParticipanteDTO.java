@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import com.projeto.palpite.entities.Participante;
 
-public class PalpiteDTO implements Serializable {
+public class ParticipanteDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Long id;
@@ -15,17 +15,16 @@ public class PalpiteDTO implements Serializable {
 	private String nomePalpite;
 	private String grupo;
 
-	public PalpiteDTO() {
+	public ParticipanteDTO() {
 
 	}
 
-	public PalpiteDTO(Participante entity) {
-
+	public ParticipanteDTO(Participante entity) {
 		id = entity.getId();
 		nome = entity.getNome();
 		idade = entity.getIdade();
 		email = entity.getEmail();
-		idioma = entity.getIdioma();
+        idioma = entity.getIdioma();
 		nomePalpite = entity.getPalpites().getTime().getNomePalpite();
 		grupo = entity.getPalpites().getTime().getGrupo();
 
@@ -86,4 +85,5 @@ public class PalpiteDTO implements Serializable {
 	public void setGrupo(String grupo) {
 		this.grupo = grupo;
 	}
+
 }

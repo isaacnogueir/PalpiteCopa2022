@@ -7,22 +7,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.projeto.palpite.Services.PalpiteService;
-import com.projeto.palpite.dto.PalpiteDTO;
-import com.projeto.palpite.dto.PalpiteInsertDTO;
+import com.projeto.palpite.Services.ParticipanteService;
+import com.projeto.palpite.dto.ParticipanteDTO;
+import com.projeto.palpite.dto.ParticipanteInsertDTO;
 
 @RestController
-@RequestMapping(value = "/palpite")
-public class PalpiteResource {
+@RequestMapping(value = "/participante")
+public class ParticipanteResource {
 
 	@Autowired
-	private PalpiteService service;
+	private ParticipanteService service;
 
 	@PostMapping
-	public ResponseEntity<PalpiteDTO> insert(@RequestBody PalpiteInsertDTO DTO){
-		PalpiteDTO newDTO = service.insert(DTO);
+	public ResponseEntity<ParticipanteDTO> insert(@RequestBody ParticipanteInsertDTO DTO) {
+		ParticipanteDTO newDTO = service.insert(DTO);
+
 		return ResponseEntity.ok().body(newDTO);
-		
-		
+
 	}
 }
